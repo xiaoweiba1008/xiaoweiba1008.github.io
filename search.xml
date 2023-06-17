@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<h3 id="ipv6设置"><a href="#ipv6设置" class="headerlink" title="ipv6设置"></a>ipv6设置</h3><ul><li>确保运行商已经接入ipv6</li><li>ipv6可能需要在(光猫、路由器)设置，光猫和路由器因品牌不一，具体设置需要自行百度 </li><li>电脑需开启ipv6<ul><li>控制面板&gt;网络和Internet&gt;网络连接&gt;右击正在使用的网卡&gt;属性&gt;选中Internet协议版本6(TCP&#x2F;IPv6)&gt;确定</li></ul></li></ul><p><strong><a href="http://test-ipv6.com/">点击我查看是否可以使用ipv6</a></strong></p><h3 id="ipv6小知识"><a href="#ipv6小知识" class="headerlink" title="ipv6小知识"></a>ipv6小知识</h3><ol><li>可能需要设置防火墙  (光猫、路由器、服务器)   </li><li>使用ipv6进行http请求的格式http:&#x2F;&#x2F;[ipv6地址]:端口   </li><li>运行商可能会屏蔽一些端口 例如80、8080，使用其他端口即可</li><li>有的游戏可以使用ipv6进行联机，如MC</li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> 网络 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -33,7 +39,7 @@
       
         <tags>
             
-            <tag> git ssh </tag>
+            <tag> -git -ssh </tag>
             
         </tags>
       
@@ -52,7 +58,7 @@
       
         <tags>
             
-            <tag> ipv6 ssh </tag>
+            <tag> -ipv6 -ssh </tag>
             
         </tags>
       
