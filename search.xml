@@ -39,7 +39,9 @@
       
         <tags>
             
-            <tag> -git -ssh </tag>
+            <tag> ssh </tag>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -58,7 +60,9 @@
       
         <tags>
             
-            <tag> -ipv6 -ssh </tag>
+            <tag> ipv6 </tag>
+            
+            <tag> ssh </tag>
             
         </tags>
       
