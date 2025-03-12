@@ -8,7 +8,7 @@
       <link href="//blogs/test.html"/>
       <url>//blogs/test.html</url>
       
-        <content type="html"><![CDATA[<p>!(欧耶)[http:&#x2F;&#x2F;[2409:8a3c:67cb:6960:d00d:bc84:a2eb:b325]:8081&#x2F;img&#x2F;下载.jpg]  </p><img src="http://[2409:8a3c:67cb:6960:d00d:bc84:a2eb:b325]:8081/img/下载.jpg">]]></content>
+        <content type="html"><![CDATA[<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><p>!(欧耶)[http:&#x2F;&#x2F;[2409:8a3c:67cb:6960:d00d:bc84:a2eb:b325]:8081&#x2F;img&#x2F;下载.jpg]  </p><img src="http://[2409:8a3c:67cb:6960:d00d:bc84:a2eb:b325]:8081/img/下载.jpg">]]></content>
       
       
       
