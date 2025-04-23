@@ -1,22 +1,148 @@
-document.querySelector("#scroll-down").style.zIndex="1"
-let header = document.querySelector("#page-header")
-header.style.overflow="hidden"
-header.style.display="flex"
-header.style.justifyContent="center"
-header.style.alignItems="center"
-header.style.backgroundPosition="center center"
-// let video = document.createElement("video")
-// video.width="99%"
-// video.loop = "loop"
-// video.autoplay="autoplay"
-// video.src="/images/bg.mp4"
-// video.muted="muted"
-// header.appendChild(video)
-// video.play()
 
 
-// 使用模板字符串和insertAdjacentHTML构建并插入HTML
-const template = `
-<video width="" loop autoplay muted src="/images/bg.mp4"></video>
-`;
-header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
+// 保存 文件
+let file = null;
+
+let videoUrl = null;
+
+let video = null
+
+let flag = true
+
+
+
+function getVideoBlob(flag,url) {
+    if(flag){
+
+         fetch(url)
+        .then(response => response.blob()) // 获取Blob对象
+        .then(blob => {
+            console.log('视频Blob对象已获取:', blob);
+            file = blob
+            // // 你可以在这里处理Blob对象，例如创建URL或使用URL.createObjectURL()进行预览等
+             // 创建可用于<video>标签的URL
+             //setVideoSource(video,videoUrl); // 使用上面提到的方法设置视频源
+
+
+             videoUrl = URL.createObjectURL(file); 
+             console.log("创建videoURL完成");
+             setVideoSource(video,videoUrl)
+
+
+
+        })
+        .catch(error => console.error('获取视频失败:', error));
+    }else{
+
+         console.log(file);
+    
+    videoUrl = URL.createObjectURL(file); 
+    console.log(videoUrl);
+    setVideoSource(video,videoUrl)
+    }
+
+   
+   
+}
+
+
+function bgrender() {
+    //初始化样式
+    let scroll = document.querySelector("#scroll-down")
+    let header = document.querySelector("#page-header")
+    scroll.style.zIndex = "1"
+    header.style.overflow = "hidden"
+    header.style.display = "flex"
+    header.style.justifyContent = "center"
+    header.style.alignItems = "center"
+    header.style.backgroundPosition= "center"
+    // let video = document.createElement("video")
+    // video.width="99%"
+    // video.loop = "loop"
+    // video.autoplay="autoplay"
+    // video.src="/images/bg.mp4"
+    // video.muted="muted"
+    // header.appendChild(video)
+    // video.play()
+    console.log("样式初始化完成");
+
+
+
+
+    const template = `
+    <video id="bgvideo" width="" loop autoplay muted ></video>
+    `;
+    header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
+
+    video = document.querySelector("#bgvideo")
+
+    console.log("创建video标签完成");
+    
+    getVideoBlob(flag,"/images/bg.mp4")
+    flag = false
+    
+
+
+
+
+
+
+
+
+    // // 使用模板字符串和insertAdjacentHTML构建并插入HTML
+    // const template = `
+    // <video id="bgvideo" width="" loop autoplay muted src="/images/bg.mp4"></video>
+    // `;
+    // header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
+
+
+}
+
+
+
+bgrender()
+
+
+
+
+
+function setVideoSource(video,videoUrl) {
+    // const video = document.getElementById('videoPlayer');
+    // const source = document.getElementById('videoSource');
+
+    
+    video.src = videoUrl; // 设置视频源的URL
+    video.load(); // 加载视频
+    console.log("加载视频源完成");
+}
+
+
+
+let tab = true
+window.addEventListener('popstate', function (event) {
+    console.log("Location: " + document.location); // 输出当前URL
+
+
+    if(tab){
+        tab = false
+        this.setTimeout(()=>{
+            bgrender()
+            tab = true
+            console.log("我执行了么");
+            
+        },100)
+        
+        
+    }
+    
+     
+    
+
+
+});
+
+
+
+
+
+
