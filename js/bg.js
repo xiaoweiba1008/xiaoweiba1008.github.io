@@ -1,6 +1,10 @@
 document.querySelector("#scroll-down").style.zIndex="1"
 let header = document.querySelector("#page-header")
 header.style.overflow="hidden"
+header.style.display="flex"
+header.style.justifyContent="center"
+header.style.alignItems="center"
+header.style.backgroundPosition="center center"
 // let video = document.createElement("video")
 // video.width="99%"
 // video.loop = "loop"
@@ -13,6 +17,6 @@ header.style.overflow="hidden"
 
 // 使用模板字符串和insertAdjacentHTML构建并插入HTML
 const template = `
-<video width="100%" loop autoplay muted src="/images/bg.mp4"></video>
+<video width="" loop autoplay muted src="/images/bg.mp4"></video>
 `;
 header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
