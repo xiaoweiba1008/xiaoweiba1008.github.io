@@ -118,31 +118,44 @@ function setVideoSource(video,videoUrl) {
 
 
 
-let tab = true
-window.addEventListener('popstate', function (event) {
-    console.log("Location: " + document.location); // 输出当前URL
+// let tab = true
+// window.addEventListener('popstate', function (event) {
+//     console.log("Location: " + document.location); // 输出当前URL
 
 
-    if(tab){
-        tab = false
-        this.setTimeout(()=>{
-            bgrender()
-            tab = true
-            console.log("我执行了么");
+//     if(tab){
+//         tab = false
+//         this.setTimeout(()=>{
+//             bgrender()
+//             tab = true
+//             console.log("我执行了么");
             
-        },100)
+//         },100)
         
         
-    }
+//     }
     
+
      
     
 
 
-});
+// });
+document.addEventListener('pjax:complete', (e)=>{
+      
+   
+    const flag = (e.target.location.pathname.split("/"))[1]
+    if(flag=="page"||flag==''){
+        console.log('bg');
+        
+        bgrender()
+    }
+ 
+    delete flag
 
-
-
+ 
+    
+})
 
 
 
