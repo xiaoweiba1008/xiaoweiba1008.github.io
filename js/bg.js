@@ -77,8 +77,11 @@ function bgrender() {
     video = document.querySelector("#bgvideo")
 
     console.log("创建video标签完成");
-    
-    getVideoBlob(flag,"./images/bg.mp4")
+    //原子
+    getVideoBlob(flag,"/blog/images/bg.mp4")
+
+    //github
+    //getVideoBlob(flag,"/images/bg.mp4")
     flag = false
     
 
@@ -144,7 +147,9 @@ function setVideoSource(video,videoUrl) {
 document.addEventListener('pjax:complete', (e)=>{
       
    
-    const flag = (e.target.location.pathname.split("/"))[1]
+    const flag = (e.target.location.pathname.split("/"))[2]
+    console.log(flag);
+    
     if(flag=="page"||flag==''){
         console.log('bg');
         
