@@ -78,7 +78,7 @@ function bgrender() {
 
     console.log("创建video标签完成");
     
-    getVideoBlob(flag,"/images/bg.mp4")
+    getVideoBlob(flag,"./images/bg.mp4")
     flag = false
     
 
