@@ -10,6 +10,23 @@ let video = null
 let flag = true
 
 
+let time = new Date().getHours()
+
+let bgName = "bg.mp4"
+
+if(time<8 && time>=1){
+    bgName = "窗边的伊蕾娜（清晨）.mp4"
+}else if(time<18 && time>=8){ 
+    bgName = "窗边的伊蕾娜（白天）.mp4"
+}else if(time<19 && time>=18){ 
+    bgName = "窗边的伊蕾娜（黄昏）.mp4"
+}else if(time<=0 && time>=19){ 
+    bgName = "窗边的伊蕾娜（晚上）.mp4"
+}
+
+
+
+
 
 function getVideoBlob(flag,url) {
     if(flag){
@@ -70,7 +87,7 @@ function bgrender() {
 
 
     const template = `
-    <video id="bgvideo" width="" loop autoplay muted ></video>
+    <video id="bgvideo" width="1920px" loop autoplay muted ></video>
     `;
     header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
 
@@ -78,7 +95,7 @@ function bgrender() {
 
     console.log("创建video标签完成");
     //原子
-    getVideoBlob(flag,"/blog/images/bg.mp4")
+    getVideoBlob(flag,"/blog/images/"+bgName)
 
     //github
     //getVideoBlob(flag,"/images/bg.mp4")
