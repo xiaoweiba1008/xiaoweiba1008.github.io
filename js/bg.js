@@ -20,10 +20,11 @@ if(time<8 && time>=1){
     bgName = "窗边的伊蕾娜（白天）.mp4"
 }else if(time<19 && time>=18){ 
     bgName = "窗边的伊蕾娜（黄昏）.mp4"
-}else if(time<=0 && time>=19){ 
-    bgName = "窗边的伊蕾娜（晚上）.mp4"
+}else if(time>=19){ 
+    bgName = "窗边的伊蕾娜（夜晚）.mp4"
 }
 
+console.log(bgName);
 
 
 
