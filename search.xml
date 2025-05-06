@@ -125,9 +125,9 @@
       
         <tags>
             
-            <tag> ssh </tag>
-            
             <tag> git </tag>
+            
+            <tag> ssh </tag>
             
         </tags>
       
@@ -146,9 +146,9 @@
       
         <tags>
             
-            <tag> ipv6 </tag>
-            
             <tag> ssh </tag>
+            
+            <tag> ipv6 </tag>
             
         </tags>
       
