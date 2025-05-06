@@ -1,5 +1,8 @@
 
 
+
+
+
 // 保存 文件
 let file = null;
 
@@ -8,6 +11,7 @@ let videoUrl = null;
 let video = null
 
 let flag = true
+
 
 
 let time = new Date().getHours()
@@ -64,6 +68,10 @@ function getVideoBlob(flag,url) {
 }
 
 
+
+
+
+
 function bgrender() {
     //初始化样式
     let scroll = document.querySelector("#scroll-down")
@@ -88,7 +96,7 @@ function bgrender() {
 
 
     const template = `
-    <video id="bgvideo" width="1920px" loop autoplay muted ></video>
+    <video id="bgvideo" width="1920px" loop autoplay muted  style="transition:opacity 0.5s; opacity:0"></video>
     `;
     header.insertAdjacentHTML('beforeend', template); // 'beforeend' 表示在body的末尾插入
 
@@ -134,6 +142,7 @@ function setVideoSource(video,videoUrl) {
     
     video.src = videoUrl; // 设置视频源的URL
     video.load(); // 加载视频
+    video.style.opacity="1"
     console.log("加载视频源完成");
 }
 
