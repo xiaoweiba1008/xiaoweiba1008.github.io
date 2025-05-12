@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .link {
+            display: flex;
+          
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .link .list {
+            width: 48%;
+            padding-left: 1%;
+            margin: 1%;
+            box-sizing: border-box;
+            /* display: flex;
+            justify-items: center;
+            align-items: center; */
+            border: 1px solid rgb(207, 207, 207);
+            background-size: 100% 100%;
+            border-radius: 5px;
+            transition: all .2s ease;
+
+        }
+
+        .list>a {
+            text-decoration: none;
+        }
+
+        .list:hover {
+            background-color: rgb(62, 157, 220);
+
+        }
+
+        .list:hover .color {
+
+            color: rgb(255, 255, 255);
+            transition: all .2s ease;
+        }
+
+
+
+
+        .item {
+
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            margin: 0 auto;
+            overflow: hidden;
+            height: 100px;
+        }
+
+
+        .name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: black;
+            font-weight: bold;
+
+
+        }
+
+
+        .describe {
+            color: darkgrey;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
+            word-wrap: break-word;
+
+        }
+
+        .link .img {
+
+            width: 20%;
+        }
+
+        img {
+            display: inline-block;
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .info {
+            width: 75%;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link">
+        <!-- 列表 -->
+
+        <!-- Github -->
+        <div class="list">
+            <!-- 链接 -->
+            <a href="https://github.com/" target="_blank">
+                <div class="item">
+                    <div class="img">
+                        <!-- 站点图片 -->
+                        <img src="/blog/images/link/Github.png"alt="" srcset="">
+                    </div>
+                    <div class="info">
+
+
+                        <div class="name color">
+                            <!-- 站点名称 -->
+                            GitHub
+                        </div>
+
+                        <div class="describe color">
+                            <!-- 站点描述 -->
+                            版本控制和协作的代码托管平台
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+
+
+        <!-- Cloudflare -->
+         <div class="list">
+            <!-- 链接 -->
+            <a href="https://www.cloudflare-cn.com/" target="_blank">
+                <div class="item">
+                    <div class="img">
+                        <!-- 站点图片 -->
+                        <img src="/blog/images/link/Cloudflare.png"alt="" srcset="">
+                    </div>
+                    <div class="info">
+
+
+                        <div class="name color">
+                            <!-- 站点名称 -->
+                            Cloudflare
+                        </div>
+
+                        <div class="describe color">
+                            <!-- 站点描述 -->
+                           网站安全管理、性能优化及相关的技术支持服务
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+
+          <div class="list">
+            <!-- 链接 -->
+            <a href="https://thumbsnap.com/" target="_blank">
+                <div class="item">
+                    <div class="img">
+                        <!-- 站点图片 -->
+                        <img src="/blog/images/link/Thumbsnap.png"alt="" srcset="">
+                    </div>
+                    <div class="info">
+
+
+                        <div class="name color">
+                            <!-- 站点名称 -->
+                            Thumbsnap
+                        </div>
+
+                        <div class="describe color">
+                            <!-- 站点描述 -->
+                           国外免费图床
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+
+           <div class="list">
+            <!-- 链接 -->
+            <a href="https://www.doubao.com/" target="_blank">
+                <div class="item">
+                    <div class="img">
+                        <!-- 站点图片 -->
+                        <img src="/blog/images/link/Doubao.png"alt="" srcset="">
+                    </div>
+                    <div class="info">
+
+
+                        <div class="name color">
+                            <!-- 站点名称 -->
+                            豆包
+                        </div>
+
+                        <div class="describe color">
+                            <!-- 站点描述 -->
+                           字节旗下人工智能助手 文本生成、知识问答、代码生成、推理计算等
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+
+
+          <div class="list">
+            <!-- 链接 -->
+            <a href="https://www.bilibili.com/" target="_blank">
+                <div class="item">
+                    <div class="img">
+                        <!-- 站点图片 -->
+                        <img src="/blog/images/link/bilibili.png"alt="" srcset="">
+                    </div>
+                    <div class="info">
+
+
+                        <div class="name color">
+                            <!-- 站点名称 -->
+                            bilibili
+                        </div>
+
+                        <div class="describe color">
+                            <!-- 站点描述 -->
+                           哔哩哔哩弹幕网
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+<script>
+
+
+
+
+    // let frame_height = document.querySelector(".link").clientHeight+"px"   
+    // console.log( frame_height);
+    
+    // // setTimeout(()=>{
+    // console.log(document.querySelector("#myFrame"));
+
+    // },1000)
+    
+
+</script>
+</body>
+
+</html>

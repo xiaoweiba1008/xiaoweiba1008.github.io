@@ -76,6 +76,7 @@ function bgrender() {
     //初始化样式
     let scroll = document.querySelector("#scroll-down")
     let header = document.querySelector("#page-header")
+    if(!(scroll)){return}
     scroll.style.zIndex = "1"
     header.style.overflow = "hidden"
     header.style.display = "flex"
