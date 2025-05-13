@@ -196,22 +196,9 @@ document.addEventListener('pjax:complete', (e) => {
         console.log('bg');
 
         bgrender()
-    } else if (flag == "link") {
+    } 
 
-        let link_height = sessionStorage.getItem("link_height")
-
-        if (link_height) {
-            document.querySelector("#myFrame").height = link_height
-        }
-
-        delete link_height;
-
-
-
-
-    }
-
-    delete flag
+     flag = null
 
 
 
