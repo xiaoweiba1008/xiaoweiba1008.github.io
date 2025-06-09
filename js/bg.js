@@ -189,7 +189,7 @@ function setVideoSource(video, videoUrl) {
 document.addEventListener('pjax:complete', (e) => {
 
 
-    const flag = (e.target.location.pathname.split("/"))[2]
+    let flag = (e.target.location.pathname.split("/"))[2]
     console.log(flag);
 
     if (flag == "page" || flag == '') {
