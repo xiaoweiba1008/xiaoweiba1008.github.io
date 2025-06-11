@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ssh | Blog</title><meta name="author" content="偏爱吖"><meta name="copyright" content="偏爱吖"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SSH（Secure Shell）是一种网络协议，用于在不安全的网络中提供安全的远程登录和其他网络服务。 ssh 基本工作流程SSH 连接的建立分为两个阶段：密钥交换和会话建立。    密钥交换（Key Exchange）客户端发起连接：客户端向服务器发送连接请求，携带自己支持的 SSH 版本和加密算法列表。服务器响应：服务器选择一个共同支持的算法，并发送自己的主机公钥（存储在&#x2F;etc&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh">
+<meta property="og:url" content="https://test.atomgit.net/blog/blogs/ssh.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="SSH（Secure Shell）是一种网络协议，用于在不安全的网络中提供安全的远程登录和其他网络服务。 ssh 基本工作流程SSH 连接的建立分为两个阶段：密钥交换和会话建立。    密钥交换（Key Exchange）客户端发起连接：客户端向服务器发送连接请求，携带自己支持的 SSH 版本和加密算法列表。服务器响应：服务器选择一个共同支持的算法，并发送自己的主机公钥（存储在&#x2F;etc&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://test.atomgit.net/blog/images/tx.png">
+<meta property="article:published_time" content="2025-06-11T07:13:41.000Z">
+<meta property="article:modified_time" content="2025-06-11T07:14:29.864Z">
+<meta property="article:author" content="偏爱吖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://test.atomgit.net/blog/images/tx.png"><link rel="shortcut icon" href="/blog/images/diary.png"><link rel="canonical" href="https://test.atomgit.net/blog/blogs/ssh.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.15/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"/blog/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ssh',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-11 15:14:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style> @media (max-width:900px) {#aside-content{display:none}#live2d-widget{display:none}}</style><style>.avatar-img img{transition:none} .avatar-img{border-radius:5px}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog/images/tx.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/life"><i class="fa-fw fas fa-pen"></i><span> 日志</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog/images/default_cover.jpg')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="Blog"><span class="site-name">Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/life"><i class="fa-fw fas fa-pen"></i><span> 日志</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ssh</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-06-11T07:13:41.000Z" title="Created 2025-06-11 15:13:41">2025-06-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-06-11T07:14:29.864Z" title="Updated 2025-06-11 15:14:29">2025-06-11</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>SSH（Secure Shell）是一种网络协议，用于在不安全的网络中提供安全的远程登录和其他网络服务。</p>
+<h3 id="ssh-基本工作流程"><a href="#ssh-基本工作流程" class="headerlink" title="ssh 基本工作流程"></a>ssh 基本工作流程</h3><p>SSH 连接的建立分为两个阶段：密钥交换和会话建立。  </p>
+<ol>
+<li><p>密钥交换（Key Exchange）<br>客户端发起连接：客户端向服务器发送连接请求，携带自己支持的 SSH 版本和加密算法列表。<br>服务器响应：服务器选择一个共同支持的算法，并发送自己的主机公钥（存储在&#x2F;etc&#x2F;ssh&#x2F;目录下）。<br>密钥交换算法：双方使用 Diffie-Hellman 或 ECDH 等算法，在不安全的网络上协商出一个共享的会话密钥（Session Key）。<br>该过程中，即使第三方截获通信，也无法计算出会话密钥。    </p>
+</li>
+<li><p>身份验证（Authentication）<br>服务器验证客户端的身份，常见方式有：<br>密码验证：客户端发送用户名和密码（经会话密钥加密）。<br>密钥对验证：客户端使用私钥对消息签名，服务器用客户端公钥验证（需提前将公钥添加到服务器的~&#x2F;.ssh&#x2F;authorized_keys）。<br>证书验证：使用 CA 颁发的证书进行身份验证（企业环境常用）。    </p>
+</li>
+<li><p>会话建立<br>身份验证通过后，双方使用会话密钥加密所有后续通信。<br>客户端和服务器进入交互式会话，所有命令和输出都被加密传输。</p>
+</li>
+</ol>
+<h3 id="关于ssh中密钥验证"><a href="#关于ssh中密钥验证" class="headerlink" title="关于ssh中密钥验证"></a>关于ssh中密钥验证</h3><p>SSH 中的密钥验证是保障通信安全的核心机制，主要分为主机密钥验证和用户密钥验证两个部分</p>
+<h4 id="一、主机密钥验证（服务器身份验证）"><a href="#一、主机密钥验证（服务器身份验证）" class="headerlink" title="一、主机密钥验证（服务器身份验证）"></a>一、主机密钥验证（服务器身份验证）</h4><ol>
+<li>验证目的<br>确保客户端确实在与目标服务器通信，而非中间人攻击。</li>
+<li>验证流程  <ol>
+<li>服务器发送公钥<br> 客户端连接服务器时，服务器会发送自己的主机公钥（如 RSA、ED25519）。  </li>
+<li>客户端检查本地记录<br> 客户端在本地的 ~&#x2F;.ssh&#x2F;known_hosts 文件中查找该服务器的公钥记录：</li>
+</ol>
+<ul>
+<li>首次连接：无记录，客户端会提示用户确认公钥指纹（需要其他渠道验证 如密码验证）。  </li>
+<li>非首次连接：比对新接收的公钥与记录是否一致。</li>
+</ul>
+<ol start="3">
+<li>验证结果处理</li>
+</ol>
+<ul>
+<li>匹配：连接继续，使用协商的会话密钥加密通信。  </li>
+<li>不匹配：客户端发出警告（如 “REMOTE HOST IDENTIFICATION HAS CHANGED”），并拒绝连接。</li>
+</ul>
+</li>
+<li>密钥存储与管理</li>
+</ol>
+<ul>
+<li>服务器端：主机密钥存储在 &#x2F;etc&#x2F;ssh&#x2F; 目录，如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/ssh/ssh_host_ed25519_key      <span class="comment"># 私钥（保密）</span></span><br><span class="line">/etc/ssh/ssh_host_ed25519_key.pub  <span class="comment"># 公钥（公开）</span></span><br></pre></td></tr></table></figure></li>
+<li>客户端：首次连接后，服务器公钥被添加到 <code>~/.ssh/known_hosts</code>，格式示例：<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="二、用户密钥验证（客户端身份验证）"><a href="#二、用户密钥验证（客户端身份验证）" class="headerlink" title="二、用户密钥验证（客户端身份验证）"></a>二、用户密钥验证（客户端身份验证）</h4><ol>
+<li>验证目的<br>确认客户端用户是否拥有合法的私钥，替代传统密码登录。</li>
+<li>验证流程<ol>
+<li>客户端生成密钥对<br>客户端使用 ssh-keygen 生成密钥对（如 RSA）： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh/id_rsa         <span class="comment"># 私钥（保密）</span></span><br><span class="line">~/.ssh/id_rsa.pub     <span class="comment"># 公钥（可公开）</span></span><br></pre></td></tr></table></figure></li>
+<li>上传公钥到服务器<br> 客户端将公钥内容添加到服务器的 <code>~/.ssh/authorized_keys</code> 文件中。</li>
+<li>身份验证过程</li>
+</ol>
+<ul>
+<li>服务器向客户端发送一个随机挑战（Challenge）。</li>
+<li>客户端使用私钥对挑战进行签名，并将签名结果发送回服务器。</li>
+<li>服务器使用存储在 authorized_keys 中的公钥验证签名：<ul>
+<li>验证通过：允许登录。</li>
+<li>验证失败：拒绝登录。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优势与应用</li>
+</ol>
+<ul>
+<li>安全性更高：避免密码明文传输，私钥难以破解。</li>
+<li>自动化场景：适合脚本或程序自动登录（如 CI&#x2F;CD 部署）。</li>
+<li>多因素认证：可与其他认证方式（如密码、TOTP）结合使用。</li>
+</ul>
+<h4 id="三、常见问题与解决方案"><a href="#三、常见问题与解决方案" class="headerlink" title="三、常见问题与解决方案"></a>三、常见问题与解决方案</h4><ol>
+<li>主机密钥变更问题</li>
+</ol>
+<ul>
+<li>原因：服务器重装、密钥重新生成、中间人攻击。</li>
+<li>解决：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除旧记录（替换example.com为目标主机）</span></span><br><span class="line">ssh-keygen -R example.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动编辑known_hosts文件</span></span><br><span class="line">vim ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>用户密钥验证失败<br>排查步骤：<ol>
+<li>检查客户端私钥权限（应为 600）：chmod 600 ~&#x2F;.ssh&#x2F;id_rsa</li>
+<li>确认服务器 authorized_keys 权限（600）和目录权限（700）。</li>
+<li>查看服务器日志（如 &#x2F;var&#x2F;log&#x2F;auth.log）获取详细错误信息。</li>
+</ol>
+</li>
+</ol>
+<h3 id="ssh-客户端生成密钥对"><a href="#ssh-客户端生成密钥对" class="headerlink" title="ssh 客户端生成密钥对"></a>ssh 客户端生成密钥对</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span>  <span class="comment"># 推荐使用ED25519算法</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>密钥对会生成在    <code>～/.ssh/</code>  下</li>
+</ul>
+<h3 id="ssh-分发公钥到服务器bash"><a href="#ssh-分发公钥到服务器bash" class="headerlink" title="ssh 分发公钥到服务器bash"></a>ssh 分发公钥到服务器bash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id  -p 端口 username@server_ip</span><br></pre></td></tr></table></figure>
+
+<p>或者将公钥 手动复制到服务器的<code>~/.ssh/authorized_keys</code> 下</p>
+<p>    </p>
+<h3 id="ssh禁用密码登陆"><a href="#ssh禁用密码登陆" class="headerlink" title="ssh禁用密码登陆"></a>ssh禁用密码登陆</h3><ul>
+<li>编辑服务器的<code>/etc/ssh/sshd_config</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no</span><br><span class="line">PubkeyAuthentication <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启 SSH 服务：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd  <span class="comment"># Ubuntu/Debian</span></span><br><span class="line">sudo service sshd restart    <span class="comment"># CentOS/RHEL</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh-快捷登陆"><a href="#ssh-快捷登陆" class="headerlink" title="ssh 快捷登陆"></a>ssh 快捷登陆</h3><ul>
+<li><p>使用ssh的配置文件</p>
+<p>在用户目录下创建或编辑<code>~/.ssh/config</code>文件，添加服务器别名和连接信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host myserver          <span class="comment"># 自定义别名</span></span><br><span class="line">    HostName 192.168.1.100  <span class="comment"># 服务器IP或域名</span></span><br><span class="line">    Port 22            <span class="comment"># 端口号</span></span><br><span class="line">    User username      <span class="comment"># 用户名</span></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa  <span class="comment"># 私钥路径</span></span><br></pre></td></tr></table></figure>
+
+<p>配置后，在终端只需输入<code>ssh myserver</code>即可快速连接。</p>
+</li>
+</ul>
+<h3 id="关于主机密钥"><a href="#关于主机密钥" class="headerlink" title="关于主机密钥"></a>关于主机密钥</h3><p>SSH 主机密钥在 SSH 连接里起着关键作用，主要有以下两个方面：</p>
+<ol>
+<li>验证服务器身份（核心功能）<br>当你通过 SSH 连接到服务器时，比如 <code>ssh user@example.com</code>，服务器会把自己的公钥发送给客户端。客户端会对这个公钥进行验证，确认：</li>
+</ol>
+<ul>
+<li>该公钥是否和自己本地 <code>~/.ssh/known_hosts</code> 文件中记录的一致。</li>
+<li>该公钥是否由可信赖的 CA（Certificate Authority）签名。</li>
+</ul>
+<p>这样做能有效防止中间人攻击。打个比方，攻击者伪装成目标服务器，要是没有主机密钥验证，客户端就可能在不知情的情况下把数据发送给攻击者。</p>
+<ol start="2">
+<li>加密通信<br>主机密钥是 SSH 建立安全通道的基础。在连接建立的初始阶段，客户端和服务器会借助主机密钥完成密钥交换，进而生成会话密钥。后续的数据传输都是通过这个会话密钥进行加密的。</li>
+</ol>
+<h4 id="密钥的生成与存储"><a href="#密钥的生成与存储" class="headerlink" title="密钥的生成与存储"></a>密钥的生成与存储</h4><ul>
+<li><strong>自动生成</strong>：使用 <code>ssh-keygen -A</code> 命令可以自动生成主机密钥，一般会生成 RSA、ECDSA、Ed25519 等不同类型的密钥。</li>
+<li><strong>存储位置</strong>：这些密钥存放在服务器的 <code>/etc/ssh/</code> 目录下，具体有：<ul>
+<li><code>/etc/ssh/ssh_host_rsa_key</code>（私钥）</li>
+<li><code>/etc/ssh/ssh_host_rsa_key.pub</code>（公钥）</li>
+</ul>
+</li>
+<li><strong>客户端记录</strong>：客户端首次连接服务器后，服务器的公钥会被保存在用户家目录下的 <code>~/.ssh/known_hosts</code> 文件中。</li>
+</ul>
+<h4 id="实际应用中的重要提示"><a href="#实际应用中的重要提示" class="headerlink" title="实际应用中的重要提示"></a>实际应用中的重要提示</h4><ul>
+<li><strong>密钥变更提示</strong>：如果服务器的主机密钥发生了变化（像重新生成了密钥），客户端在下次连接时会发出警告，这其实是一种安全保护机制。</li>
+<li><strong>定期更换密钥</strong>：为了提升安全性，建议定期更换主机密钥，更换后要通知所有客户端更新 <code>known_hosts</code> 文件。</li>
+<li><strong>使用强密钥类型</strong>：优先选用 Ed25519 或 ECDSA 等现代密钥类型，避免使用 RSA-1024 这类较弱的密钥。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>主机密钥就像是服务器的“数字身份证”，它能确保：</p>
+<ul>
+<li>客户端确实是在和真正的目标服务器进行通信。</li>
+<li>通信双方的数据在传输过程中不会被窃取或篡改。</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/blog/blogs/%E4%BE%A7%E8%80%B3%E5%80%BE%E5%90%AC.html" title="侧耳倾听"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">侧耳倾听</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/images/tx.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">偏爱吖</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">ssh 基本工作流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Essh%E4%B8%AD%E5%AF%86%E9%92%A5%E9%AA%8C%E8%AF%81"><span class="toc-number">2.</span> <span class="toc-text">关于ssh中密钥验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BB%E6%9C%BA%E5%AF%86%E9%92%A5%E9%AA%8C%E8%AF%81%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">一、主机密钥验证（服务器身份验证）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E9%AA%8C%E8%AF%81%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">二、用户密钥验证（客户端身份验证）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.3.</span> <span class="toc-text">三、常见问题与解决方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-number">3.</span> <span class="toc-text">ssh 客户端生成密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-%E5%88%86%E5%8F%91%E5%85%AC%E9%92%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8bash"><span class="toc-number">4.</span> <span class="toc-text">ssh 分发公钥到服务器bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh%E7%A6%81%E7%94%A8%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86"><span class="toc-number">5.</span> <span class="toc-text">ssh禁用密码登陆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-%E5%BF%AB%E6%8D%B7%E7%99%BB%E9%99%86"><span class="toc-number">6.</span> <span class="toc-text">ssh 快捷登陆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%BB%E6%9C%BA%E5%AF%86%E9%92%A5"><span class="toc-number">7.</span> <span class="toc-text">关于主机密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90%E4%B8%8E%E5%AD%98%E5%82%A8"><span class="toc-number">7.1.</span> <span class="toc-text">密钥的生成与存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA"><span class="toc-number">7.2.</span> <span class="toc-text">实际应用中的重要提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/blogs/ssh.html" title="ssh">ssh</a><time datetime="2025-06-11T07:13:41.000Z" title="Created 2025-06-11 15:13:41">2025-06-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/blogs/%E4%BE%A7%E8%80%B3%E5%80%BE%E5%90%AC.html" title="侧耳倾听">侧耳倾听</a><time datetime="2025-06-09T07:36:11.000Z" title="Created 2025-06-09 15:36:11">2025-06-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/blogs/promise.html" title="promise">promise</a><time datetime="2025-06-09T06:23:47.000Z" title="Created 2025-06-09 14:23:47">2025-06-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/blogs/fetchAPI.html" title="fetchAPI">fetchAPI</a><time datetime="2025-06-09T06:23:33.000Z" title="Created 2025-06-09 14:23:33">2025-06-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/blogs/Cloudflare%E4%B8%8B%E9%85%8D%E7%BD%AEDDNS.html" title="Cloudflare下配置DDNS">Cloudflare下配置DDNS</a><time datetime="2025-05-16T11:15:20.000Z" title="Created 2025-05-16 19:15:20">2025-05-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blog/images/footer.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By 偏爱吖</div><div class="footer_custom_text">You shine like the stars | You light up my heart<div>京ICP备2020036654号-9</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.15/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8240426399" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-lrctype="1"> </div><script src="/blog/js/bg.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/blog/js/search/local-search.js"></script></div></div><script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":350},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
